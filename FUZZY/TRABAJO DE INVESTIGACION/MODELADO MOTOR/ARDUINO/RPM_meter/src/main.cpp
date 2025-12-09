@@ -7,6 +7,7 @@ int motor = 3;
 // Variables adicionales (contadores, estados, etc)
 int estados = 0;
 int contadorEstado = 0;
+int contadorFuncionamiento = 0;
 
 // variables de interrupciòn
 volatile int rpm = 0;
@@ -39,32 +40,33 @@ void loop() {
     analogWrite(motor, 0);
     contadorEstado = 0;
     rpm = 0;
+    contadorFuncionamiento = 0;
 
   }else if (estados == 1){
-    Serial.println("Motor encendido");
-    digitalWrite(motor, HIGH);
-    delay(9999);
-    Serial.println(rpm*3);
-    Serial.println("Motor apagado");
-    digitalWrite(motor, LOW);
-    contadorEstado++;
-    rpm = 0;
+
+    if(contadorFuncionamiento != 100){
+      digitalWrite(motor, HIGH);
+      contadorFuncionamiento++;
+      delay(100);
+      Serial.println(rpm*60/0.2);
+      rpm = 0;
+    }else{
+      Serial.println("Motor apagado");
+      digitalWrite(motor, LOW);
+      contadorEstado++;
+      contadorFuncionamiento = 0;
+    }
+
     if(contadorEstado == 1){
       estados = 0;
     }else{
       estados = 2;
     }
-    
-    
 
   }else if(estados == 2){
-    delay(9999);
     rpm = 0;
     estados = 1;
-
   }else{
     estados = 0;
   }
-  
-  delay(100);
 }
