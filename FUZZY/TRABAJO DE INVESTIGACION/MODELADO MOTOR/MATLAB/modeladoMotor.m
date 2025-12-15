@@ -4,3 +4,5 @@ clc, clear, close all;
 data = readmatrix('rpm_motor.csv');
 
 plot(data);
+
+disp(mean(data))
