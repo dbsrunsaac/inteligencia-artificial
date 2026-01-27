@@ -1,0 +1,56 @@
+test_control_temperatura_arduino.o: \
+ C:/Users/Bremdows/UNSAAC/ELECTI~1/INTELI~1/INTELI~1/FUZZY/TRABAJ~1/SIMULINK/test_control_temperatura_arduino_ert_rtw/test_control_temperatura_arduino.c \
+ C:/Users/Bremdows/UNSAAC/ELECTI~1/INTELI~1/INTELI~1/FUZZY/TRABAJ~1/SIMULINK/test_control_temperatura_arduino_ert_rtw/test_control_temperatura_arduino.h \
+ C:/Users/Bremdows/UNSAAC/ELECTI~1/INTELI~1/INTELI~1/FUZZY/TRABAJ~1/SIMULINK/test_control_temperatura_arduino_ert_rtw/rtwtypes.h \
+ C:/PROGRA~1/MATLAB/R2025a/simulink/include/rtw_continuous.h \
+ C:/Users/Bremdows/UNSAAC/ELECTI~1/INTELI~1/INTELI~1/FUZZY/TRABAJ~1/SIMULINK/test_control_temperatura_arduino_ert_rtw/rtwtypes.h \
+ C:/PROGRA~1/MATLAB/R2025a/simulink/include/rtw_solver.h \
+ C:/PROGRA~1/MATLAB/R2025a/simulink/include/rtw_continuous.h \
+ C:/PROGRA~1/MATLAB/R2025a/toolbox/target/shared/svd/common/include/MW_AnalogIn.h \
+ C:/PROGRA~1/MATLAB/R2025a/toolbox/target/shared/svd/common/include/MW_SVD.h \
+ C:/PROGRA~1/MATLAB/R2025a/toolbox/target/shared/svd/common/include/MW_PWM.h \
+ C:/Users/Bremdows/UNSAAC/ELECTI~1/INTELI~1/INTELI~1/FUZZY/TRABAJ~1/SIMULINK/test_control_temperatura_arduino_ert_rtw/test_control_temperatura_arduino_types.h \
+ C:/PROGRA~1/MATLAB/R2025a/toolbox/target/shared/svd/common/include/MW_SVD.h \
+ C:/Users/Bremdows/UNSAAC/ELECTI~1/INTELI~1/INTELI~1/FUZZY/TRABAJ~1/SIMULINK/test_control_temperatura_arduino_ert_rtw/rt_nonfinite.h \
+ C:/Users/Bremdows/UNSAAC/ELECTI~1/INTELI~1/INTELI~1/FUZZY/TRABAJ~1/SIMULINK/test_control_temperatura_arduino_ert_rtw/MW_target_hardware_resources.h \
+ C:/Users/Bremdows/AppData/Roaming/MathWorks/MATLAB/addons/toolbox/target/supportpackages/arduinotarget/scheduler/include/arduinoAVRScheduler.h \
+ C:\Users\Bremdows\AppData\Roaming\MathWorks\MATLAB\addons\aCLI\data\packages\arduino/hardware/avr/1.8.3/cores/arduino/Arduino.h \
+ C:\Users\Bremdows\AppData\Roaming\MathWorks\MATLAB\addons\aCLI\data\packages\arduino/hardware/avr/1.8.3/cores/arduino/binary.h \
+ C:\Users\Bremdows\AppData\Roaming\MathWorks\MATLAB\addons\aCLI\data\packages\arduino/hardware/avr/1.8.3/variants/standard/pins_arduino.h \
+ C:/Users/Bremdows/UNSAAC/ELECTI~1/INTELI~1/INTELI~1/FUZZY/TRABAJ~1/SIMULINK/test_control_temperatura_arduino_ert_rtw/test_control_temperatura_arduino_private.h
+
+C:/Users/Bremdows/UNSAAC/ELECTI~1/INTELI~1/INTELI~1/FUZZY/TRABAJ~1/SIMULINK/test_control_temperatura_arduino_ert_rtw/test_control_temperatura_arduino.h:
+
+C:/Users/Bremdows/UNSAAC/ELECTI~1/INTELI~1/INTELI~1/FUZZY/TRABAJ~1/SIMULINK/test_control_temperatura_arduino_ert_rtw/rtwtypes.h:
+
+C:/PROGRA~1/MATLAB/R2025a/simulink/include/rtw_continuous.h:
+
+C:/Users/Bremdows/UNSAAC/ELECTI~1/INTELI~1/INTELI~1/FUZZY/TRABAJ~1/SIMULINK/test_control_temperatura_arduino_ert_rtw/rtwtypes.h:
+
+C:/PROGRA~1/MATLAB/R2025a/simulink/include/rtw_solver.h:
+
+C:/PROGRA~1/MATLAB/R2025a/simulink/include/rtw_continuous.h:
+
+C:/PROGRA~1/MATLAB/R2025a/toolbox/target/shared/svd/common/include/MW_AnalogIn.h:
+
+C:/PROGRA~1/MATLAB/R2025a/toolbox/target/shared/svd/common/include/MW_SVD.h:
+
+C:/PROGRA~1/MATLAB/R2025a/toolbox/target/shared/svd/common/include/MW_PWM.h:
+
+C:/Users/Bremdows/UNSAAC/ELECTI~1/INTELI~1/INTELI~1/FUZZY/TRABAJ~1/SIMULINK/test_control_temperatura_arduino_ert_rtw/test_control_temperatura_arduino_types.h:
+
+C:/PROGRA~1/MATLAB/R2025a/toolbox/target/shared/svd/common/include/MW_SVD.h:
+
+C:/Users/Bremdows/UNSAAC/ELECTI~1/INTELI~1/INTELI~1/FUZZY/TRABAJ~1/SIMULINK/test_control_temperatura_arduino_ert_rtw/rt_nonfinite.h:
+
+C:/Users/Bremdows/UNSAAC/ELECTI~1/INTELI~1/INTELI~1/FUZZY/TRABAJ~1/SIMULINK/test_control_temperatura_arduino_ert_rtw/MW_target_hardware_resources.h:
+
+C:/Users/Bremdows/AppData/Roaming/MathWorks/MATLAB/addons/toolbox/target/supportpackages/arduinotarget/scheduler/include/arduinoAVRScheduler.h:
+
+C:\Users\Bremdows\AppData\Roaming\MathWorks\MATLAB\addons\aCLI\data\packages\arduino/hardware/avr/1.8.3/cores/arduino/Arduino.h:
+
+C:\Users\Bremdows\AppData\Roaming\MathWorks\MATLAB\addons\aCLI\data\packages\arduino/hardware/avr/1.8.3/cores/arduino/binary.h:
+
+C:\Users\Bremdows\AppData\Roaming\MathWorks\MATLAB\addons\aCLI\data\packages\arduino/hardware/avr/1.8.3/variants/standard/pins_arduino.h:
+
+C:/Users/Bremdows/UNSAAC/ELECTI~1/INTELI~1/INTELI~1/FUZZY/TRABAJ~1/SIMULINK/test_control_temperatura_arduino_ert_rtw/test_control_temperatura_arduino_private.h:
