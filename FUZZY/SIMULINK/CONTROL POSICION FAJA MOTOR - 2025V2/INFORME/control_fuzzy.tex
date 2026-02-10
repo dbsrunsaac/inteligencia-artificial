@@ -1,0 +1,291 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{graphics} % for pdf, bitmapped graphics files
+\usepackage{subfig}
+\usepackage{subcaption}
+\usepackage{hyperref}
+\usepackage{academicons}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{tabularx} % Asegúrate de incluir este paquete
+
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+
+\usetikzlibrary{shapes.geometric, arrows}
+
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+		T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+% Color Enlace
+\definecolor{colorEnlace}{RGB}{0, 0, 0}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=colorEnlace,
+	citecolor=colorEnlace,
+	urlcolor=colorEnlace,
+	pdfauthor={Davis Bremdow Salazar Roa},
+	pdftitle={Control Fuzzy - Faja de un motor}
+}
+
+\definecolor{mybg}{rgb}{0.97,0.97,0.97}
+\definecolor{mygray}{gray}{0.4}
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{myblue}{rgb}{0,0,0.8}
+\definecolor{mypurple}{rgb}{0.58,0,0.82}
+\definecolor{myred}{rgb}{0.7,0,0}
+
+\lstdefinelanguage{MatlabEnhanced}{
+	language=Matlab,
+	morekeywords={[2]linspace,plot,title,xlabel,ylabel,legend,grid},
+	morekeywords={[3]sin,cos,exp,log,sqrt},
+	keywordstyle=\color{myblue}\bfseries,
+	keywordstyle=[2]\color{mypurple},
+	keywordstyle=[3]\color{myred},
+	commentstyle=\color{mygreen}\itshape,
+	stringstyle=\color{mygray},
+	morecomment=[l]%
+}
+
+\lstset{
+	language=MatlabEnhanced,
+	backgroundcolor=\color{mybg},
+	frame=single,
+	basicstyle=\ttfamily\small,
+	showstringspaces=false,
+	numbers=none,              %
+	xleftmargin=0pt,           %
+	framexleftmargin=0pt,      
+	framexrightmargin=0pt,
+	framextopmargin=2pt,
+	framexbottommargin=2pt,
+	breaklines=true,
+	tabsize=1,
+}
+
+% Control 
+\usepackage{amsmath}
+\begin{document}
+	
+	\title{INFORME CONTROL FUZZY PARA UNA FAJA MOVIL}
+	\author{
+		\makebox[\textwidth][c]{\large\textbf{Universidad Nacional de San Antonio Abad del Cusco}}\\
+		\makebox[\textwidth][c]{\normalsize\textit{Escuela profesional de Ingeniería Electrónica}}\\
+		\makebox[\textwidth][c]{\normalsize\textit{Inteligencia Artificial}}\\
+		\and
+		\IEEEauthorblockN{Ing. Ruben Dario Florez Zela}
+		\IEEEauthorblockA{ Ingeniero Electrónico \\
+			Cusco, Perú \\
+			ruben.florez@unsaac.edu.pe}
+		\and
+		\IEEEauthorblockN{Davis Bremdow Salazar Roa}
+		\IEEEauthorblockA{Estudiante de Ingeniería Electrónica \\
+			Cusco, Perú \\
+			200353@unsaac.edu.pe}
+	}
+	
+	\maketitle
+	
+	\begin{abstract}
+		
+	\end{abstract}
+	
+	\begin{IEEEkeywords}
+		Control Fuzzy, Lógica difusa
+	\end{IEEEkeywords}
+	
+	\section{Sistema}
+	
+	Para aplicar el control Fuzzy se tomo como referencia al sistema mostrado en la figura \ref{fig:planta} la cual describe la composición del mismo y actuador sobre el cual se realizará la acción de control (motor DC) para fijar la faja en una posición deseada en función al error entre la posición actual y la posición establecido.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth]{media/planta}
+		\caption{Planta del sistema}
+		\label{fig:planta}
+	\end{figure}
+	
+	%% Contenido del documento
+	\section{Diseño del control Fuzzy}
+	Para el diseño de controlador se hace uso de la aplicación \textbf{Fuzzy} en MATLAB la cual se muestra en la figura \ref{fig:fuzzyapp} y en la cual se definiran las entradas, salidas el tipo de inferencia y finalmente el conjunto de reglas para el control en este caso de una faja mediante un motor DC.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth]{media/fuzzy_app}
+		\caption{Fuzzy App - MATLAB}
+		\label{fig:fuzzyapp}
+	\end{figure}
+	
+	De forma inicial se definen las entradas en este caso se tiene una entrada (error) y la salida (voltaje) con los cuales se realizaran los efectos de control sobre nuestro actuador o motor.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth]{media/entradas_salidas}
+		\caption{Entradas y salidas del controlador Fuzzy}
+		\label{fig:entradassalidas}
+	\end{figure}
+	
+	\section{Entradas y salidas}
+	
+	En la misma interfaz se pueden modificar las variables del sistema como el universo de discurso y los limites en conjuntos difusos o funciones de membresía como se muestra en la figura \ref{fig:entradassalidas} y los tipos correspondientes a estos como se muestran en las figuras \ref{fig:membresiaentrada}, \ref{fig:membresiasalida} para la entrada y salida respectivamente.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth]{media/membresia_entrada}
+		\caption{Funciones de membresia - Entrada}
+		\label{fig:membresiaentrada}
+	\end{figure}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth]{media/membresia_salida}
+		\caption{Funciones de membresía - Salida}
+		\label{fig:membresiasalida}
+	\end{figure}
+	
+	\section{Reglas Fuzzy}
+	
+	Una vez definidos el motor de inferencia (Mamdani por defecto) y las entradas y salidas se definen las reglas que en este caso \textbf{al ser 5 entradas se tendrán 5 reglas} definidas aplicandose cada una para cada etiqueta y su correspondiente en la salida para el ejemplo propuesto del motor de la faja, el resumen de estas se muestra en la figura \ref{fig:regla-fuzzy}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth]{media/regla-fuzzy}
+		\caption{Conjunto de reglas - Control Fuzzy}
+		\label{fig:regla-fuzzy}
+	\end{figure}
+	
+	\subsection{Rule Viewer}
+	
+	Con las reglas definidas es posible ver el comportamiento de las mismas de forma interactiva mediante la interfaz \textit{Rule Viewer} la cual muestra las diferentes funciones de pertenencia y cuales se activan en función al valor de entrada en este caso el error, apreciando al mismo tiempo el valor defuzzificado en el lado derecho con el conjunto de salida obtenido a partir de la activación de las diferentes funciones en la salida.
+	
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth]{media/rule-viewer}
+		\caption{Rule Viewer - Control Fuzzy}
+		\label{fig:rule-viewer}
+	\end{figure}
+	
+	Los valores correspondientes para el ejemplo capturado, muestran un error de -17.3 en la entrada y uno de -8.26 V en la salida para la corrección en la posición del mismo mediante el conjunto de salida luego de aplicar el método del centroide (en las configuraciones).
+	
+	\section{Surface o respuesta Fuzzy}
+	
+	Una vista general del comportamiento de nuestro sistema se puede realizar mediante la curva de respuesta en función a todos los posibles valores de entrada y en el cual se pueden apreciar los límites del sistema y los valores máximos esperados para cada caso como se muestra en \ref{fig:surface-fuzzy}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth]{media/surface-fuzzy}
+		\caption{Surface - Control Fuzzy}
+		\label{fig:surface-fuzzy}
+	\end{figure}
+	
+	\section{Modelando el sistema de control}
+	
+	Para modelar un sistema es necesario contar con las diferentes partes que lo integran por lo tanto para ello se hizo uso de Simulink para integrar estos elementos como el punto de suma, el seteo del punto de establecimiento mediante un step, el controlador y finalmente la función de transferencia correspondiente al sistema en conjunto con un scope para analizar la salida.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth]{media/sistema-simulink}
+		\caption{Sistema de control - Fuzzy Simulink}
+		\label{fig:sistema-simulink}
+	\end{figure}
+	
+	\section{Análisis del sistema para diferentes puntos de entrada}
+	
+	Para iniciar con el modelado se tuvo como referencia puntos de referencia o set points conocidos para ver la respuesta del sistema y comprobar la estabilidad, así como otros parámetros como el sobre impulso $M_p$, el tiempo de establecimiento $t_s$ y las oscilaciones obtenidas para cada caso.
+	
+	Como punto de partida se inicio con un valor de 5cm el cual es equivalente en voltaje con una relación 1:1, al establecer este valor en el bloque \textbf{step} \ref{fig:signal-5cm-reference}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.4\textwidth]{media/signal-5cm-reference}
+		\caption{Señal de referencia a 5cm}
+		\label{fig:signal-5cm-reference}
+	\end{figure}
+	
+	Obteniendo como respuesta para la entrada de 5v la señal mostrada en la figura \ref{fig:res-5cm} para la cual se tienen las siguientes características:
+	
+	\begin{itemize}
+		\item $M_p$ : 6.7196
+		\item $t_s$ : 10.8627
+		\item Número de oscilaciones : 3
+	\end{itemize}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.4\textwidth]{media/res-5cm}
+		\caption{Respuesta del sistema para un set point de 5cm}
+		\label{fig:res-5cm}
+	\end{figure}
+	
+	Por otro lado para un set point de 10cm se obtiene la respuesta mostrada en la figura \ref{fig:res-10cm} y que cuenta con las siguientes características:
+	
+	\begin{itemize}
+		\item $M_p$ : 13.896 V
+		\item $t_s$ : 11.18s
+		\item Número de oscilaciones : 3
+	\end{itemize}
+	
+	Y que a partir de las mismas se puede inferir la presencia de un \textbf{sistema sobre amortiguado} de segundo orden debido a la curva obtenida.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth]{media/res-10cm}
+		\caption{Respuesta set point 10cm}
+		\label{fig:res-10cm}
+	\end{figure}
+	
+	Así mismo para valores por fuera de lo establecido en el universo de discurso como por ejemplo valores por encima o por debajo de 20 y -20 respectivamente la respuesta del controlador se vuelve nula, según se muestra en las gráficas \ref{fig:res-50cm}, \ref{fig:res-50cm1}, \ref{fig:res--25cm} y \ref{fig:} para los valores de -50, 50, -25, 28 respectivamente.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.4\textwidth]{media/res-50cm}
+		\caption{Respuesta set point de -50cm}
+		\label{fig:res-50cm}
+	\end{figure}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.4\textwidth]{media/res-50cm1}
+		\caption{Respuesta set point 50cm}
+		\label{fig:res-50cm1}
+	\end{figure}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.4\textwidth]{media/res--25cm}
+		\caption{Respuesta set point -25cm}
+		\label{fig:res--25cm}
+	\end{figure}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.4\textwidth]{media/res-28cm}
+		\caption{Respuesta set point 28cm}
+		\label{fig:res-28cm}
+	\end{figure}
+	\newpage
+	
+	\section{Conclusiones}
+	
+	El sistema de control Fuzzy implementado demuestra un comportamiento variable en función al valor de entrada definido en el bloque \textbf{step} esto debido a la variación en los parámetros de la respuesta para valores de 5v y 10v para el sobreimpulso y tiempo de establecimiento, lo cual requiere redefinir las reglas base para compensar estas variaciones; por otro lado la baja de cantidad de reglas definidas en el controlador Fuzzy fueron las suficientes para brindar una aproximación a lo deseado destacando la fortaleza de este tipo de controlador.
+	
+	
+	\bibliographystyle{IEEEtran}
+	\bibliography{biblio}
+	
+\end{document}
