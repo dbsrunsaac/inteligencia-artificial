@@ -1,0 +1,70 @@
+[System]
+Name='calidadAgua'
+Type='mamdani'
+Version=2.0
+NumInputs=3
+NumOutputs=1
+NumRules=16
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='ICOMO'
+Range=[0 1]
+NumMFs=5
+MF1='NINGUNA':'trimf',[0 0 0.1]
+MF2='BAJO':'trimf',[0.1 0.25 0.4]
+MF3='MEDIO':'trimf',[0.3 0.45 0.6]
+MF4='ALTO':'trimf',[0.5 0.65 0.8]
+MF5='MUY ALTO':'trapmf',[0.7 0.8 1 1]
+
+[Input2]
+Name='ICOMI'
+Range=[0 1]
+NumMFs=5
+MF1='NINGUNA':'trimf',[0 0 0.1]
+MF2='BAJO':'trimf',[0.1 0.25 0.4]
+MF3='MEDIO':'trimf',[0.3 0.45 0.6]
+MF4='ALTO':'trimf',[0.5 0.65 0.8]
+MF5='MUY ALTO':'trapmf',[0.7 0.8 1 1]
+
+[Input3]
+Name='OPI'
+Range=[0 1]
+NumMFs=5
+MF1='NINGUNA':'trimf',[0 0 0.2]
+MF2='BAJA':'trimf',[0.1 0.25 0.4]
+MF3='MEDIA':'trimf',[0.3 0.45 0.6]
+MF4='ALTA':'trimf',[0.5 0.65 0.8]
+MF5='MUY ALTA':'trapmf',[0.7 0.8 1 1]
+
+[Output1]
+Name='CALIDAD'
+Range=[0 1]
+NumMFs=5
+MF1='MUY MALA':'trimf',[0 0 0.2]
+MF2='MALA':'trapmf',[0.1 0.2 0.3 0.4]
+MF3='REGULAR':'trapmf',[0.3 0.4 0.5 0.6]
+MF4='BUENA':'trapmf',[0.5 0.6 0.7 0.8]
+MF5='EXCELENTE':'trapmf',[0.7 0.8 1 1]
+
+[Rules]
+5 3 5, 1 (1) : 1
+4 2 5, 2 (1) : 1
+3 1 5, 3 (1) : 1
+5 3 4, 3 (1) : 1
+4 2 4, 2 (1) : 1
+3 1 4, 3 (1) : 1
+5 3 3, 2 (1) : 1
+4 2 3, 3 (1) : 1
+3 1 3, 2 (1) : 1
+5 3 2, 3 (1) : 1
+4 2 2, 4 (1) : 1
+3 1 2, 4 (1) : 1
+5 3 1, 3 (1) : 1
+4 2 1, 4 (1) : 1
+3 1 1, 4 (1) : 1
+1 1 1, 5 (1) : 1
