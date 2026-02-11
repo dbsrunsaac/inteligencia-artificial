@@ -1,0 +1,289 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{graphics} % for pdf, bitmapped graphics files
+\usepackage{subfig}
+\usepackage{subcaption}
+\usepackage{hyperref}
+\usepackage{academicons}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{tabularx} % Asegúrate de incluir este paquete
+
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+
+\usetikzlibrary{shapes.geometric, arrows}
+
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+		T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+% Color Enlace
+\definecolor{colorEnlace}{RGB}{0, 0, 0}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=colorEnlace,
+	citecolor=colorEnlace,
+	urlcolor=colorEnlace,
+	pdfauthor={Davis Bremdow Salazar Roa},
+	pdftitle={Control Fuzzy - Faja de un motor}
+}
+
+\definecolor{mybg}{rgb}{0.97,0.97,0.97}
+\definecolor{mygray}{gray}{0.4}
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{myblue}{rgb}{0,0,0.8}
+\definecolor{mypurple}{rgb}{0.58,0,0.82}
+\definecolor{myred}{rgb}{0.7,0,0}
+
+\lstdefinelanguage{MatlabEnhanced}{
+	language=Matlab,
+	morekeywords={[2]linspace,plot,title,xlabel,ylabel,legend,grid},
+	morekeywords={[3]sin,cos,exp,log,sqrt},
+	keywordstyle=\color{myblue}\bfseries,
+	keywordstyle=[2]\color{mypurple},
+	keywordstyle=[3]\color{myred},
+	commentstyle=\color{mygreen}\itshape,
+	stringstyle=\color{mygray},
+	morecomment=[l]%
+}
+
+\lstset{
+	language=MatlabEnhanced,
+	backgroundcolor=\color{mybg},
+	frame=single,
+	basicstyle=\ttfamily\small,
+	showstringspaces=false,
+	numbers=none,              %
+	xleftmargin=0pt,           %
+	framexleftmargin=0pt,      
+	framexrightmargin=0pt,
+	framextopmargin=2pt,
+	framexbottommargin=2pt,
+	breaklines=true,
+	tabsize=1,
+}
+
+% Control 
+\usepackage{amsmath}
+\begin{document}
+	
+	\title{SISTEMA FUZZY PARA DETERMINAR LA CALIDAD DEL AGUA}
+	\author{
+		\makebox[\textwidth][c]{\large\textbf{Universidad Nacional de San Antonio Abad del Cusco}}\\
+		\makebox[\textwidth][c]{\normalsize\textit{Escuela profesional de Ingeniería Electrónica}}\\
+		\makebox[\textwidth][c]{\normalsize\textit{Inteligencia Artificial}}\\
+		\and
+		\IEEEauthorblockN{Ing. Ruben Dario Florez Zela}
+		\IEEEauthorblockA{ Ingeniero Electrónico \\
+			Cusco, Perú \\
+			ruben.florez@unsaac.edu.pe}
+		\and
+		\IEEEauthorblockN{Davis Bremdow Salazar Roa}
+		\IEEEauthorblockA{Estudiante de Ingeniería Electrónica \\
+			Cusco, Perú \\
+			200353@unsaac.edu.pe}
+	}
+	
+	\maketitle
+	
+	\begin{abstract}
+		
+		
+	\end{abstract}
+	
+	\begin{IEEEkeywords}
+		Control Fuzzy, Lógica difusa, MATLAB, FuzzyLogicDesigner, Mamdani
+	\end{IEEEkeywords}
+	
+	\section{Sistema - Determinar la calidad del agua}
+	
+	El problema planteado es como establecer la calidad del agua mediante el uso del control difusos, contando para ello con tres variables de entrada, una de salida y entre las cuales se puede apreciar:
+	
+	\begin{itemize}
+		\item ICOMO (Contaminación Orgánica)
+		\item ICOMI (Mineralización)
+		\item OPI (Polución orgánica)
+	\end{itemize}
+	
+	y como variable de salida:
+	
+	\begin{itemize}
+		\item CALIDAD
+	\end{itemize}
+	
+	Estando representada cada uno de estas por un universo de discurso entre $[0, 1]$ indicando así el porcentaje de cada variable respecto al nivel de contaminación y calidad del agua.
+	
+	
+	\section{Diseño del controlador Fuzzy}
+	
+	Para el diseño del controlador se hizo uso de la herramienta/app perteneciente al entorno de MATLAB \textit{Logic Fuzzy Designer} la cual es una plataforma interactiva para definir las \textbf{variables lingüísticas, funciones de membresia, reglas y el tipo de inferencia difusa a usar}, además de presentar un entorno integrado para las diferentes configuraciones para cada parámetro incluyendo las salidas, una vista general al nuevo entorno se aprecia en la figura \ref{fig:fuzzy-logic-designer}.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth]{media/fuzzy-logic-designer}
+		\caption{App MATLAB - Fuzzy Logic Designer}
+		\label{fig:fuzzy-logic-designer}
+	\end{figure}
+	
+	La cual muestra además las configuración para el sistema para determinar la calidad del agua.
+	
+	\subsection{Organización de ventanas del Logic Fuzzy Designer}
+	
+	La nueva interfaz además de agregar nuevas funcionalidades como las mostradas en la figura \ref{fig:barra-funciones} como las de agregar nuevas reglas o modificar el tipo de inferencia entre los diferentes tipos, también organiza todos sus vistas en diferentes paneles, organizandose de forma jerarquica de izquierda a derecha mediante una interfaz para visualizar la variables de entrada, salida y un diagrama de árbol simplificado para las reglas como se muestra en la figura \ref{fig:panel-reglas}.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth]{media/barra-funciones}
+		\caption{Fuzzy Logic Designer - Pestañas de funcionalidades}
+		\label{fig:barra-funciones}
+	\end{figure}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth]{media/panel-variables}
+		\caption{Logic Fuzzy Designer - Panel de variables}
+		\label{fig:panel-variables}
+	\end{figure}
+	
+	Obteniendo en los subsiguientes paneles, por ejemplo el central un resumen de las variables de entrada con las funciones de pertenencia establecidas, el tipo de inferencia, entre otras interfaces que se van desplegando y almacenando en forma de pestañas conforme estas se van aperturando como se muestra en la figura \ref{fig:panel-visualizacion}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth]{media/panel-visualizacion}
+		\caption{Fuzzy Logic Designer - Panel de visualización de parámetros}
+		\label{fig:panel-visualizacion}
+	\end{figure}
+	
+	Finalmente el panel de la derecha es un contenedor de contenido variable que cambia en función al bloque seleccionado en el panel central de visualización y con el cual se pueden modificar directamente las funciones de pertenencia o membresía o las reglas en caso de seleccionarse el tipo de inferencia.
+	
+	\section{Definiendo los parámetros del Sistema Fuzzy}
+	
+	Como se definió al inicio para el sistema se harán uso de 3 variables de entrada y una salida (CALIDAD) por lo tanto es necesario definir el conjunto para cada variable lingüística e internamente los subconjuntos asociados a sus funciones de pertenencia para establecer los grados en los cuales un valor se integrada en cada subconjunto.
+	
+	En la figura \ref{fig:variables-linguisticas} se aprecia la definición de las variables de entrada ICOMO, ICOMI y OPI y la variable de salida CALIDAD.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth]{media/variables-linguisticas}
+		\caption{Variables lingüísticas de entrada y salida}
+		\label{fig:variables-linguisticas}
+	\end{figure}
+	
+	Una acercamiento a las mismas mediante el uso de la siguiente pestaña o tab, nos permite ver las funciones de membresía de forma más detallada para poder observar los dominios de cada sub conjunto perteneciente a un termino de la variable lingüística, por ejemplo en la figura \ref{fig:icomo} se muestra las funciones de pertenencia para la variable ICOMO.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth]{media/ICOMO}
+		\caption{Términos y funciones de pertenencia asociados a la variable ICOMO}
+		\label{fig:icomo}
+	\end{figure}
+	
+	Subsecuentemente se tienen las funciones de pertenencia para ICOMI y OPI en las figuras \ref{fig:icomi}, \ref{fig:opi} respectivamente.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth]{media/ICOMI}
+		\caption{Términos y funciones de pertenencia asociados a la variable ICOMI}
+		\label{fig:icomi}
+	\end{figure}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth]{media/OPI}
+		\caption{Términos y funciones de pertenencia asociados a la variable OPI}
+		\label{fig:opi}
+	\end{figure}
+	
+	Finalmente para la variable de salida se tiene la siguiente función de pertenencia mostrada en la figura \ref{fig:calidad}
+	
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.5\textwidth]{media/CALIDAD}
+		\caption{Términos y funciones de pertenencia asociados a la variable CALIDAD}
+		\label{fig:calidad}
+	\end{figure}
+	
+	\section{Reglas para el control}
+	
+	Una vez establecidos las funciones de pertenencia para cada variable esta nueva interfaz define las reglas de forma interactiva de forma proporcional a la cantidad de variables y etiquetas definidas dentro de cada una, sin embargo también es posible modificar estas reglas y definir las propias en caso no se adecuen a lo requerido, en este caso determinar la calidad del agua.
+	
+	Es así que en el tab o pestaña \textbf{Rules Editor} es posible establecer las reglas a las cuales se limitara el funcionamiento de nuestro sistema Fuzzy, para este caso se definieron 16 reglas en función a las 3 variables cada una con un operador and o conjunción lógica (máx en los conjuntos difusos) para obtener la salida deseada, en la figura \ref{fig:def-reglas} se muestra la cantidad de reglas definidas.
+	
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth]{media/def-reglas}
+		\caption{Definición de las reglas - Sistema Fuzzy}
+		\label{fig:def-reglas}
+	\end{figure}
+	
+	
+	\section{Resultados}
+	
+	Con las reglas difusas obtenidas en esta última etapa se comprueban los resultados mediante las pestañas \textbf{Rule Inference} la cual de forma gráfica permite introducir valores para cada una de nuestras entradas para obtener un valor de salida en función a nuestras reglas y el motor de inferencia establecido (centroide por defecto), para este caso se tienen 4 conjuntos de entrada:
+	
+	\begin{enumerate}
+		\item ICOMO= 0.75, ICOMI= 0.25, OPI= 0.65
+		\item ICOMO= 0.75, ICOMI= 0.25, OPI= 0.35
+		\item ICOMO= 0.75, ICOMI= 0.25, OPI= 0.15
+		\item ICOMO= 0.20, ICOMI= 0.05, OPI= 0.05
+	\end{enumerate}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth]{media/res1}
+		\caption{Respuesta para el conjunto de entrada: 1}
+		\label{fig:res1}
+	\end{figure}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth]{media/res2}
+		\caption{Respuesta para el conjunto de entrada: 2}
+		\label{fig:res2}
+	\end{figure}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth]{media/res3}
+		\caption{Respuesta para el conjunto de entrada: 3}
+		\label{fig:res3}
+	\end{figure}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth]{media/res4}
+		\caption{Respuesta para el conjunto de entrada: 4}
+		\label{fig:res4}
+	\end{figure}
+	
+	Obteniendo como resultado para la variable calidad en cada caso los valores de: 0.25, 0.55, 0.65 0.5.
+	
+	\section{La respuesta para el conjunto de valores}
+	
+	Se puede analizar el comportamiento del sistema Fuzzy diseñado mediante el análisis de todas las variables definidas en su propio universo de discurso mediante la gráfica interactiva Surface la cual se muestra en la figura \ref{fig:surface}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth]{media/surface}
+		\caption{Sistema Fuzzy - Calidad del agua - Surface}
+		\label{fig:surface}
+	\end{figure}
+	
+	\bibliographystyle{IEEEtran}
+	\bibliography{biblio}
+	
+\end{document}
