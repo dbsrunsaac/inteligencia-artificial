@@ -1,0 +1,55 @@
+[System]
+Name='testperatura'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=15
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='temperatura'
+Range=[-10 40]
+NumMFs=5
+MF1='CONGELADO':'trapmf',[-10 -10 -5 2.5]
+MF2='FRIO':'trimf',[-5 2.5 10]
+MF3='NORMAL':'trimf',[5 15 25]
+MF4='TIBIO':'trimf',[15 25 35]
+MF5='CALIENTE':'trapmf',[30 35 40 40]
+
+[Input2]
+Name='humedad'
+Range=[0 100]
+NumMFs=3
+MF1='SECO':'trapmf',[0 0 10 30]
+MF2='HUMEDO':'trimf',[20 50 80]
+MF3='MOJADO':'trapmf',[70 90 100 100]
+
+[Output1]
+Name='tiempo'
+Range=[0 60]
+NumMFs=3
+MF1='CORTO':'trapmf',[0 0 10 20]
+MF2='MEDIO':'trapmf',[10 25 35 50]
+MF3='PROLONGADO':'trapmf',[40 50 60 60]
+
+[Rules]
+1 1, 1 (1) : 1
+2 1, 1 (1) : 1
+3 1, 2 (1) : 1
+4 1, 3 (1) : 1
+5 1, 3 (1) : 1
+1 2, 1 (1) : 1
+2 2, 1 (1) : 1
+3 2, 2 (1) : 1
+4 2, 2 (1) : 1
+5 2, 2 (1) : 1
+1 3, 2 (1) : 1
+2 3, 2 (1) : 1
+3 3, 2 (1) : 1
+4 3, 1 (1) : 1
+5 3, 1 (1) : 1

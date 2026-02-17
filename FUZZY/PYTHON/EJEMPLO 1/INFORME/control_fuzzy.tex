@@ -1,0 +1,249 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{graphics} % for pdf, bitmapped graphics files
+\usepackage{subfig}
+\usepackage{subcaption}
+\usepackage{hyperref}
+\usepackage{academicons}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{tabularx} % Asegúrate de incluir este paquete
+
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+
+\usetikzlibrary{shapes.geometric, arrows}
+
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+		T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+% Color Enlace
+\definecolor{colorEnlace}{RGB}{0, 0, 0}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=colorEnlace,
+	citecolor=colorEnlace,
+	urlcolor=colorEnlace,
+	pdfauthor={Davis Bremdow Salazar Roa},
+	pdftitle={Control Fuzzy - Faja de un motor}
+}
+
+\definecolor{mybg}{rgb}{0.97,0.97,0.97}
+\definecolor{mygray}{gray}{0.4}
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{myblue}{rgb}{0,0,0.8}
+\definecolor{mypurple}{rgb}{0.58,0,0.82}
+\definecolor{myred}{rgb}{0.7,0,0}
+
+\lstdefinelanguage{MatlabEnhanced}{
+	language=Matlab,
+	morekeywords={[2]linspace,plot,title,xlabel,ylabel,legend,grid},
+	morekeywords={[3]sin,cos,exp,log,sqrt},
+	keywordstyle=\color{myblue}\bfseries,
+	keywordstyle=[2]\color{mypurple},
+	keywordstyle=[3]\color{myred},
+	commentstyle=\color{mygreen}\itshape,
+	stringstyle=\color{mygray},
+	morecomment=[l]%
+}
+
+\lstset{
+	language=MatlabEnhanced,
+	backgroundcolor=\color{mybg},
+	frame=single,
+	basicstyle=\ttfamily\small,
+	showstringspaces=false,
+	numbers=none,              %
+	xleftmargin=0pt,           %
+	framexleftmargin=0pt,      
+	framexrightmargin=0pt,
+	framextopmargin=2pt,
+	framexbottommargin=2pt,
+	breaklines=true,
+	tabsize=1,
+}
+
+% Control 
+\usepackage{amsmath}
+\begin{document}
+	
+	\title{CONTROL FUZZY EN PYTHON - POSICIÓN DE UNA FAJA }
+	\author{
+		\makebox[\textwidth][c]{\large\textbf{Universidad Nacional de San Antonio Abad del Cusco}}\\
+		\makebox[\textwidth][c]{\normalsize\textit{Escuela profesional de Ingeniería Electrónica}}\\
+		\makebox[\textwidth][c]{\normalsize\textit{Inteligencia Artificial}}\\
+		\and
+		\IEEEauthorblockN{Ing. Ruben Dario Florez Zela}
+		\IEEEauthorblockA{ Ingeniero Electrónico \\
+			Cusco, Perú \\
+			ruben.florez@unsaac.edu.pe}
+		\and
+		\IEEEauthorblockN{Davis Bremdow Salazar Roa}
+		\IEEEauthorblockA{Estudiante de Ingeniería Electrónica \\
+			Cusco, Perú \\
+			200353@unsaac.edu.pe}
+	}
+	
+	\maketitle
+	
+	\begin{abstract}
+		
+		
+	\end{abstract}
+	
+	\begin{IEEEkeywords}
+		Control Fuzzy, Lógica difusa, MATLAB, FuzzyLogicDesigner, Mamdani
+	\end{IEEEkeywords}
+	
+	\section{Sistema}
+	
+	Para aplicar el control Fuzzy se tomo como referencia al sistema mostrado en la figura \ref{fig:planta} la cual describe la composición del mismo y actuador sobre el cual se realizará la acción de control (motor DC) para fijar la faja en una posición deseada en función al error entre la posición actual y la posición establecido.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth]{media/planta}
+		\caption{Planta del sistema}
+		\label{fig:planta}
+	\end{figure}
+	
+	
+	\section{Librerías para el controlador Fuzzy en Python}
+	
+	Una alternativa al entorno MATLAB es el uso de Python para simular y configurar el sistema Fuzzy, esto mediante la instalación de la librería \textbf{skfuzzy} la cual brinda objetos y funciones correspondientes para este modelado.
+	
+	Una forma de poder instalar este librería es mediante el empleo del gestor de paquetes de Python\textbf{pip} esto en adición a otras librerías como \textbf{numpy, matplotlib} para visualizar gráficamente los resultados para las funciones de pertenencia y salida.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth]{media/importando-librerias}
+		\caption{Importando las librerías}
+		\label{fig:importando-librerias}
+	\end{figure}
+	
+	En la figura \ref{fig:importando-librerias} se muestra las librerías importadas mediante código Python y al igual que con el uso de MATLAB es posible definir los variables de entrada, funciones de membresía, reglas y comprobar el resultado mediante la puesta en marcha del controlador.
+	
+	\section{Variables de entrada}
+	
+	Mediante la librerías se definen las variables de entrada y salida mediante el uso de las funciones Antecedent y Cosequent respectivamente como se muestra en la figura \ref{fig:variables-fuzzy}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth]{media/variables-fuzzy}
+		\caption{Variables de entrada y salida para el controlador}
+		\label{fig:variables-fuzzy}
+	\end{figure}
+	
+	Siendo así que estas funciones se definen el universo de discurso, muestreo y el nombre de la variable, ocupándose para este caso los valores de \textbf{error y voltaje}.
+	
+	\section{Funciones de membresía}
+	
+	Una vez definidas las variables de entrada se procede a definir el conjunto de términos para cada caso utilizando para ello las funciones trapezoidales y triangulares para cada caso.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth]{media/funciones-pertenencia}
+		\caption{Funciones de pertenencia para las variables definidas}
+		\label{fig:funciones-pertenencia}
+	\end{figure}
+	
+	En la figura \ref{fig:funciones-pertenencia} se muestra el código en el cual se definen las funciones de pertenencia para la variable lingüística error y voltaje, siendo posible además mostrar gráficamente la definición de las mismas mediante las funciones \textbf{.view()} en cada caso y cuyas figuras se muestras en \ref{fig:fp-error} y \ref{fig:fp-voltaje} respectivamente.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth]{media/fp-error}
+		\caption{Funciones de pertenencia para la variable error}
+		\label{fig:fp-error}
+	\end{figure}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth]{media/fp-voltaje}
+		\caption{Funciones de pertenencia para la variable voltaje}
+		\label{fig:fp-voltaje}
+	\end{figure}
+	
+	\section{Reglas Fuzzy}
+	
+	Con las funciones ya definidas es posible definir las reglas que se aplicaran para aplicar el control en la posición, generando cinco reglas en función al sistema mostrado y las cuales se muestran en la figura \ref{fig:reglas-fuzzy}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth]{media/reglas-fuzzy}
+		\caption{Reglas para los valores Fuzzy}
+		\label{fig:reglas-fuzzy}
+	\end{figure}
+	
+	Ahora estas reglas es posible aplicar el control para validar su funcionamiento, mediante la unión de reglas y aplicar la simulación mediante las funciones propuestas para \textbf{skfuzzy}, como se muestra en la figura \ref{fig:unificacion-reglas}	
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth]{media/unificacion-reglas}
+		\caption{Unión de reglas y simulación}
+		\label{fig:unificacion-reglas}
+	\end{figure}
+	
+	
+	\section{Resultados}
+	
+	Finalmente el sistema propuesto es un sistema en lazo abierto y para poder aplicar 
+	cierto control es necesario aplicar una retroalimentación considerando para ello que se debe utilizar una variable adicional que emule el voltaje de salida obtenido, por  lo tanto esto se hace definiendo la variable \textbf{volt-retro} en conjunto con la variable \textbf{set-point} para emular tal error.
+	
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth]{media/sist-retroalimentado}
+		\caption{Simulación del sistema retroalimentado}
+		\label{fig:sist-retroalimentado}
+	\end{figure}
+	
+	Siendo así que para validar el funcionamiento del sistema modelado se emula inicialmente un error de 0 \ref{fig:si-entrada} y el cual se debe corresponder con este valor de compensación para el voltaje de salida.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth]{media/si-entrada}
+		\caption{Valor de entrada 0 en la variable error}
+		\label{fig:si-entrada}
+	\end{figure}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth]{media/si-salida}
+		\caption{Voltaje de salida o respuesta del sistema}
+		\label{fig:si-salida}
+	\end{figure}
+	
+	Esto se aprecia en la figura \ref{fig:si-salida} la cual tiene un valor de 8.351999640086417e-16 el cual se aproxima a cero, validando el código propuesto.
+	
+	Finalmente para una error de entrada de -2.7 se tiene un salida aproximada de -1.841296 que se aproxima al voltaje a compensar de -2.7V mediante el modelado retroalimentado y que se muestra en la figura \ref{fig:salida2}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth]{media/salida2}
+		\caption{Respuesta del sistema para un error de -2.7V}
+		\label{fig:salida2}
+	\end{figure}
+	\newpage
+	
+	\section{Conclusiones}
+	
+	La incorporación de la retroalimentación transforma el comportamiento del sistema originalmente en lazo abierto en un esquema con capacidad de corrección dinámica del error. Al definir explícitamente la variable de error como la diferencia entre el set-point y la señal retroalimentada (volt-retro), el controlador Fuzzy actúa compensando progresivamente las desviaciones de posición de la faja.
+	
+	
+	\bibliographystyle{IEEEtran}
+	\bibliography{biblio}
+	
+\end{document}

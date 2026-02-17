@@ -1,0 +1,14 @@
+rt_nonfinite.o: \
+ C:/Users/Bremdows/UNSAAC/ELECTI~1/INTELI~1/INTELI~1/FUZZY/TRABAJ~1/SIMULINK/test_control_temperatura_arduino_ert_rtw/rt_nonfinite.c \
+ C:/Users/Bremdows/UNSAAC/ELECTI~1/INTELI~1/INTELI~1/FUZZY/TRABAJ~1/SIMULINK/test_control_temperatura_arduino_ert_rtw/rtGetNaN.h \
+ C:/Users/Bremdows/UNSAAC/ELECTI~1/INTELI~1/INTELI~1/FUZZY/TRABAJ~1/SIMULINK/test_control_temperatura_arduino_ert_rtw/rt_nonfinite.h \
+ C:/Users/Bremdows/UNSAAC/ELECTI~1/INTELI~1/INTELI~1/FUZZY/TRABAJ~1/SIMULINK/test_control_temperatura_arduino_ert_rtw/rtwtypes.h \
+ C:/Users/Bremdows/UNSAAC/ELECTI~1/INTELI~1/INTELI~1/FUZZY/TRABAJ~1/SIMULINK/test_control_temperatura_arduino_ert_rtw/rtGetInf.h
+
+C:/Users/Bremdows/UNSAAC/ELECTI~1/INTELI~1/INTELI~1/FUZZY/TRABAJ~1/SIMULINK/test_control_temperatura_arduino_ert_rtw/rtGetNaN.h:
+
+C:/Users/Bremdows/UNSAAC/ELECTI~1/INTELI~1/INTELI~1/FUZZY/TRABAJ~1/SIMULINK/test_control_temperatura_arduino_ert_rtw/rt_nonfinite.h:
+
+C:/Users/Bremdows/UNSAAC/ELECTI~1/INTELI~1/INTELI~1/FUZZY/TRABAJ~1/SIMULINK/test_control_temperatura_arduino_ert_rtw/rtwtypes.h:
+
+C:/Users/Bremdows/UNSAAC/ELECTI~1/INTELI~1/INTELI~1/FUZZY/TRABAJ~1/SIMULINK/test_control_temperatura_arduino_ert_rtw/rtGetInf.h:
