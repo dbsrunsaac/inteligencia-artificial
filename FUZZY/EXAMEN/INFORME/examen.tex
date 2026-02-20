@@ -17,7 +17,7 @@
 \usepackage{xcolor}
 \usepackage{listings}
 \usepackage{tabularx} % Asegúrate de incluir este paquete
-
+\usepackage{float}
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, arrows}
 
@@ -111,16 +111,151 @@
 	
 	\section{Simulación MATLAB}
 	
-	Para el sistema de control de temperatura mediante lógica fuzzy se define el siguiente conjunto de bloques en simulink \ref{fig:bloques-simulink}
+	Para el sistema se definen 2 entradas, una salida y para las cuales corresponde las siguientes funciones de pertenencia que se muestran en \ref{fig:per-e}, \ref{fig:per-de}
 	
-	\begin{figure}[h]
+	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.5\linewidth]{media/bloques-simulink}
+		\includegraphics[width=0.4\textwidth]{media/per-e}
+		\caption{Función de pertenencia - entrada e}
+		\label{fig:per-e}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.4\textwidth]{media/per-de}
+		\caption{Función de pertenencia - entrada de}
+		\label{fig:per-de}
+	\end{figure}
+	
+	Y para la salida en la figura \ref{fig:per-p}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.4\textwidth]{media/per-p}
+		\caption{Función de pertenencia - salida P}
+		\label{fig:per-p}
+	\end{figure}
+	
+	
+	Para el sistema de control de temperatura mediante lógica fuzzy se define el siguiente conjunto de bloques en simulink \ref{fig:bloques-simulink}, \textbf{además para cada caso la defuzzificación se muestran en las figuras mediante el tool box de MATLAB} en \ref{fig:ede-55-3} y \ref{fig:ede-63-3} respectivamente.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.5\textwidth]{media/bloques-simulink}
 		\caption{Diagrama de bloques simulink}
 		\label{fig:bloques-simulink}
 	\end{figure}
 	
-	Luego para las entradas de 10, 35 y 50 se tiene como salida respectivamente
+	Luego para las entradas de 10, 35 y 50 se tiene como salida se tienen las figuras \ref{fig:in-10}, \ref{fig:in-35}, \ref{fig:in-50} respectivamente.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.4\textwidth]{media/in-10}
+		\caption{Respuesta - Temperatura para un set point de 10}
+		\label{fig:in-10}
+	\end{figure}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.4\textwidth]{media/in-35}
+		\caption{Respuesta - Temperatura para un set point de 35}
+		\label{fig:in-35}
+	\end{figure}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.4\textwidth]{media/in-50}
+		\caption{Respuesta - Temperatura para un set point de 50}
+		\label{fig:in-50}
+	\end{figure}
+	
+	
+	Por otro lado en el toolbox de Fuzzy se puede apreciar las salidas cuando se tienen los valores de e y de para : (55, 3) y (-63, -3) en las figuras \ref{fig:ede-55-3} y \ref{fig:ede-63-3} respectivamente.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.5\textwidth]{media/ede-55-3}
+		\caption{Valor de P para e = 55 y de = 3}
+		\label{fig:ede-55-3}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.5\textwidth]{media/ede-63-3}
+		\caption{Valor de P para e = -63 y de = -3}
+		\label{fig:ede-63-3}
+	\end{figure}
+	
+	
+	Para e = 55 y de = 3, se tiene como salida para el valor de P = 2.25 y para un e = -63 y de = -3 el valor de es equivalente a -2.25
+	
+	\newpage
+	
+	\section{Simulación en Python}
+	
+	Por otro en la simulación en python se tiene el sistema equivalente en MATLAB para lo cual se definieron sus funciones de pertenencia para las entradas y salidas que se muestran en las figuras \ref{fig:py-per-e}, \ref{fig:py-per-de} y \ref{fig:py-per-p} respectivamente.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.5\textwidth]{media/py-per-e}
+		\caption{Funciones de pertenencia para - entrada e}
+		\label{fig:py-per-e}
+	\end{figure}
+	
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.5\textwidth]{media/py-per-de}
+		\caption{Funciones de pertenencia para - entrada de}
+		\label{fig:py-per-de}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.5\textwidth]{media/py-per-p}
+		\caption{Funciones de pertenencia para - salida P}
+		\label{fig:py-per-p}
+	\end{figure}
+	
+	Y para las salidas para los valores propuestos previamente en MATLAB se tiene que: para e = 55 y de = 3, se tiene como salida para el valor de P = 2.2436, como se muestra en la figura \ref{fig:py-out-55-3} 
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.5\textwidth]{media/py-out-55-3}
+		\caption{Respuesta para una e = 55 y de = 3}
+		\label{fig:py-out-55-3}
+	\end{figure}
+	
+	Y para un e = -63 y de = -3 el valor de es equivalente a -2.2499 como se muestra en la figura \ref{fig:py-out-63-3}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.5\textwidth]{media/py-out-63-3}
+		\caption{Respuesta para una e = -63 y de = -3}
+		\label{fig:py-out-63-3}
+	\end{figure}
+	
+	
+	\newpage
+	\newpage
+	
+	\section{Preguntas teóricas}
+	
+	\section{P.2}
+	
+	El trade off es el balance entre el overfiting y el underfitign que a su vez se relaciona directamente con el sesgos y bias respectivamente que implica que el modelo se sobre ajusta y no comprende los datos completamente.
+	
+	La complejidad del modelo puede hacer que los datos se sobre ajusten o que no aprendan nada es por tanto que analizar los datos y escoger el algoritmo de entrenamiento es de vital importancia para lograr un tradeoff adecuado.
+	
+	\section{P. 3}
+	
+	Supervisado = datos etiquetados
+	No supervisado = datos sin supervisar
+	
+	Y los objetivos de forma generar es el tipo de modelo que se podrá entrenar para el caso del modelo supervisado se tienen algoritmos de regresión y clasificación mientras que con los no supervisados se cuentan con aplicaciones de agrupación de datos y reconocimiento de patrones ocultos.
+	
+	Las metricas en regresión no son adecuadas para clasificación el tipo de dato de salida que se pueda obtener en el caso de la clasificación son discretos y en la regresión continuos.
+	
+	\section{P. 5}
+	Accuracy: Exactitud
 	
 	
 	\bibliographystyle{IEEEtran}
